@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+<html>
+
+    <head>
+        <title>Facebook</title>
+    </head>
+
+    <body>
+        {% block content %}
+        <a href="/fb/about/">About</a><br />
+        <img src="{% static "images/fb.png" %}" alt="Picture of fb" /> <!-- New line -->
+        {% endblock %}
+    </body>
+
+</html>
