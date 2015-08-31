@@ -9,4 +9,8 @@ class EmailForm(forms.ModelForm):
 		model = Join
 		fields = ['email', 'passwrd','name']
 
+class LoginForm(forms.Form):
+	email = forms.CharField(max_length=120)
+	passwrd = forms.CharField(widget=forms.PasswordInput()) 
+
 

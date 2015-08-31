@@ -1,13 +1,10 @@
 {% extends "fb/home.html" %}
-
 {% block content %}
-
-<h3>Please Login </h3>
-
-<form action='/fb/login/' method="POST">{% csrf_token %}
-{{form.as_p}}
-<input type="submit" value="login">
-</form>
-
-
+    <div id="login">
+        <form class="form-horizontal" name="LoginForm" action="/fb/login/" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit">
+        </form>
+    </div>
 {% endblock %}

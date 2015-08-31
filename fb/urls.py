@@ -4,8 +4,12 @@ from fb import views
 
 urlpatterns = [
     #url(r'', views.home, name='home'),
-    #url(r'^detail/$', views.detail, name='detail'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.login, name='login'),
+    url(r'^sucess/$', views.sucess, name='sucess'),
+    url(r'^logout/$', views.logout, name='logout'),
+
 
   
 ]
