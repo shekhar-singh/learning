@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from forms import EmailForm ,LoginForm
+from forms import EmailForm , LoginForm
 from fb.models import Join
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.

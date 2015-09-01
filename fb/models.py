@@ -7,3 +7,5 @@ class Join(models.Model):
 
 	def __unicode__(self):
 		return self.email
+
+
