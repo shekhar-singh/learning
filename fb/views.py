@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from forms import EmailForm , LoginForm
-from fb.models import Join
+from forms import EmailForm , LoginForm , UserProfileForm
+from fb.models import Join , UserProfile
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
@@ -75,3 +75,35 @@ def sucess(request):
 def logout(request):
     del request.session['email']
     return HttpResponseRedirect('/fb/login/')
+
+def user_profile(request):
+    if request.session['email']:
+        if request.method =='POST':
+            a=Join.objects.get(email=request.session['email'])
+            try:
+                b=UserProfile.objects.get(user=a)
+            except:
+                b = UserProfile(user=a)
+                b.save()
+                b=UserProfile.objects.get(user=a)
+            form = UserProfileForm(request.POST,instance=b)
+            if form.is_valid():
+                f= form.save(commit=False)
+                f.user=a
+                f.save()
+                return HttpResponseRedirect('/fb/login/')
+            else:
+                return render(request,'fb/profile.html',{'form':form})
+        else:
+            a=Join.objects.get(email=request.session['email'])
+            try:
+                b=UserProfile.objects.get(user=a)
+            except:
+                b = UserProfile(user=a)
+                b.save()
+                b=UserProfile.objects.get(user=a)
+            form=UserProfileForm(instance=b)
+            return render(request,'fb/profile.html',{'form':form})
+    else:
+        return HttpResponseRedirect('/fb/login/')
+

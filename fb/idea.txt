@@ -1,0 +1,19 @@
+You must also configure it as current user class in your settings file
+
+# supposing you put it in apps/models.py
+AUTH_USER_MODEL = "profiles.UserProfile"
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+
+
+3333333333333333
+
+config in settings.py
+
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+usage
+
+profile = request.user.get_profile()
+
