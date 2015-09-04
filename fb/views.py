@@ -44,7 +44,7 @@ def login(request):
     except:
         pass
     if request.method == 'POST':
-        print request.POST
+        #print request.POST
         form = LoginForm(request.POST)
         if form.is_valid():
             try:
@@ -68,7 +68,7 @@ def about(request):
 
 def sucess(request):
     if request.session['email']:
-        return render(request,'fb/sucess.html',{})
+        return render(request,'fb/loggedin.html',{})
     else:
         return HttpResponseRedirect('/fb/login/')
 
@@ -107,3 +107,5 @@ def user_profile(request):
     else:
         return HttpResponseRedirect('/fb/login/')
 
+#def loggedin(request):
+#    HttpResponseRedirect('/fb/loggedin')
